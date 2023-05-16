@@ -1,6 +1,6 @@
 #include<LiquidCrystal.h>
 LiquidCrystal lcd(13,12,11,4,5,6,7);
-const int soil = A0;
+const int temp = A0;
 int ir1state=0;
 int ir2state=0;
 int vout=0;
@@ -10,14 +10,14 @@ int zout=0;
 float con=(5.0*1000)/1023; 
 void setup()
 {
-pinMode(soil,INPUT);
+pinMode(temp,INPUT);
 Serial.begin(9600);
 lcd.begin(16,2);
 delay(500);
 }
 void loop()
 {
-ir1state=analogRead(soil);
+ir1state=analogRead(temp);
 xout=0.1873*ir1state;
 ir2state=(8*10^-5)*ir1state^2;
 yout=ir2state+xout+46.131;
